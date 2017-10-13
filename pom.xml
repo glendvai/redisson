@@ -3,7 +3,7 @@
 
     <groupId>org.redisson</groupId>
     <artifactId>redisson-parent</artifactId>
-    <version>2.10.5-SNAPSHOT</version>
+    <version>3.5.4.oncompass-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Redisson</name>
@@ -18,7 +18,9 @@
 
     <properties>
         <maven.test.skip>true</maven.test.skip>
-        <source.version>1.6</source.version>
+        <source.version>1.8</source.version>
+        <java.source.version>1.8</java.source.version>
+        <java.target.version>1.8</java.target.version>
         <test.source.version>1.8</test.source.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -138,7 +140,7 @@
       <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
       <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
       <pluginManagement>
-        <plugins>	
+        <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-release-plugin</artifactId>
@@ -151,6 +153,17 @@
               </dependency>
             </dependencies>
           </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <debug>true</debug>
+                    <debuglevel>lines,vars,source</debuglevel>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
         </plugins>
       </pluginManagement>
   </build>

@@ -201,7 +201,11 @@ public class JCacheManager implements CacheManager {
 
         JCache<?, ?> cache = caches.get(cacheName);
         if (cache != null) {
-            cache.clear();
+            if (Boolean.valueOf(properties.getProperty("skipClearOnExit"))) {
+                // do not clear cache to avoid empty cache on start
+            } else {
+                cache.clear();
+            }
             cache.close();
         }
     }
